@@ -5,8 +5,107 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TravelPal.Pages"
         mc:Ignorable="d"
-        Title="TravelsWindow" Height="450" Width="800">
+        Title="Travels overview" Height="450" Width="800"
+        Background="MintCream">
     <Grid>
+        <!--Grid-->
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="20"/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+
+            <ColumnDefinition/>
+            <ColumnDefinition Width="20"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20"/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition Height="20"/>
+        </Grid.RowDefinitions>
         
+        <!--Elements-->
+        
+        <!--Labels-->
+
+        <Label
+            Name="lblUser"
+            Content="Placeholder"
+            Grid.Row="1"
+            Grid.Column="1"
+            FontSize="18"
+            />
+
+        <Label
+            Content="Travels"
+            Grid.Row="1"
+            Grid.Column="3"
+            FontSize="16"
+            VerticalAlignment="Bottom"/>
+
+        <Label
+            Content="About TravelPal"
+            ToolTip="TravelPal was founded 1997 by 
+            Tom Cruise and Steve Wozniak"
+            Grid.Row="5"
+            Grid.Column="1"/>
+
+        <Label
+            Content="Need help?"
+            ToolTip="Add travel to your travelpal or remove by clicking the buttons,
+            You can also view your travelling details by selecting a travel and clicking
+            Details"
+            Grid.Row="5"
+            Grid.Column="2"/>
+
+        <!--Buttons-->
+
+        <Button
+            Name="btnAdd"
+            Content="Add travel"
+            Grid.Row="5"
+            Grid.Column="3"
+            Width="65"
+            Height="45"
+            BorderBrush="Transparent"
+            HorizontalAlignment="Left"
+            Margin="5 0 0 0"/>
+
+        <Button
+            Name="btnDetails"
+            Content="Details"
+            Grid.Row="5"
+            Grid.Column="3"
+            Width="65"
+            Height="45"
+            BorderBrush="Transparent"
+            HorizontalAlignment="Center"/>
+
+
+        <Button
+            Name="btnRemove"
+            Content="Remove"
+            Grid.Row="5"
+            Grid.Column="3"
+            Width="65"
+            Height="45"
+            BorderBrush="Transparent"
+            HorizontalAlignment="Right"
+            Margin="0 0 5 0 "/>
+        
+        <!--Others-->
+
+        <ListView
+            Name="lstTravels"
+            Grid.Row="2"
+            Grid.RowSpan="3"
+            Grid.Column="3"
+            />
     </Grid>
 </Window>
