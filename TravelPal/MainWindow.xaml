@@ -5,8 +5,96 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TravelPal"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="Login" Height="450" Width="800"
+        ResizeMode="NoResize"
+        Background="MintCream"
+        Foreground="MediumSlateBlue"
+        FontFamily="Arial">
     <Grid>
+        <!--Grid-->
 
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="20"/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="20"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20"/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition Height="20"/>
+        </Grid.RowDefinitions>
+        
+        <!--Elements-->
+        
+        <!--Labels-->
+
+        <Label
+            Content="TravelPal"
+            Grid.Row="1"
+            Grid.Column="1"
+            FontSize="36"
+            FontFamily="Arial"
+            Foreground="MediumSlateBlue"/>
+
+        <Label
+            Content="Username"
+            Grid.Row="1"
+            Grid.Column="2"
+            FontSize="20"
+            VerticalAlignment="Bottom"
+            HorizontalAlignment="Center"
+            FontFamily="Arial"/>
+        
+        <Label
+            Content="Password"
+            Grid.Row="1"
+            Grid.Column="3"
+            FontSize="20"
+            VerticalAlignment="Bottom"
+            HorizontalAlignment="Center"
+            FontFamily="Arial"/>
+
+        <!--Textboxes-->
+        
+        <TextBox
+            Name="txtUsername"
+            Grid.Row="2"
+            Grid.Column="2"
+            Height="25"
+            FontSize="18"
+            Margin="20 0"/>
+
+        <PasswordBox
+            Name="txtPassword"
+            Grid.Row="2"
+            Grid.Column="3"
+            Height="25"
+            FontSize="18"
+            Margin="20 0"/>
+
+        <!--Buttons-->
+
+        <Button
+            Name="btnLogin"
+            Content="Sign in"
+            Grid.Row="3"
+            Grid.Column="2"
+            Height="45"
+            Width="105"/>
+
+
+        <Button
+            Name="btnRegister"
+            Content="Register new user"
+            Grid.Row="3"
+            Grid.Column="3"
+            Height="45"
+            Width="105"/>
     </Grid>
 </Window>
