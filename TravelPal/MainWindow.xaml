@@ -40,7 +40,8 @@
             Grid.Column="1"
             FontSize="36"
             FontFamily="Arial"
-            Foreground="MediumSlateBlue"/>
+            Foreground="MediumSlateBlue"
+            ToolTip="Eat shit and die"/>
 
         <Label
             Content="Username"
@@ -86,7 +87,8 @@
             Grid.Row="3"
             Grid.Column="2"
             Height="45"
-            Width="105"/>
+            Width="105" 
+            Click="btnLogin_Click"/>
 
 
         <Button
@@ -95,6 +97,12 @@
             Grid.Row="3"
             Grid.Column="3"
             Height="45"
-            Width="105"/>
+            Width="105" 
+            Click="btnRegister_Click"
+            />
+        
+        
+
+        
     </Grid>
 </Window>
