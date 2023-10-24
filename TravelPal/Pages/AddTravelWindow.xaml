@@ -69,6 +69,11 @@
             VerticalAlignment="Center"
             />
 
+        <Label
+            Content="Quantity"
+            Grid.Row="3"
+            Grid.Column="3"/>
+
 
 
         <!--Textboxes-->
@@ -110,13 +115,20 @@
             Grid.Column="2"
             Height="25"
             Margin="5 20 40 0"/>
-        
+
+        <ComboBox
+            Name="cbQuantity"
+            Grid.Row="3"
+            Grid.Column="3"
+            Height="25"
+            Margin="5 20 40 0"/>
+
         <!--Buttons-->
 
         <Button
             Name="btnAddPacking"
             Content="Add to Luggage"
-            Grid.Row="3"
+            Grid.Row="4"
             Grid.Column="3"
             Width="105"
             Height="35"

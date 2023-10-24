@@ -6,6 +6,7 @@
         xmlns:local="clr-namespace:TravelPal.Pages"
         mc:Ignorable="d"
         Title="Travels overview" Height="450" Width="800"
+        ResizeMode="NoResize"
         Background="MintCream">
     <Grid>
         <!--Grid-->
