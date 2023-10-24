@@ -5,8 +5,135 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TravelPal.Pages"
         mc:Ignorable="d"
-        Title="TravelDetails" Height="450" Width="800">
+        Title="Travel Details" Height="450" Width="800"
+        ResizeMode="NoResize"
+        Background="MintCream">
     <Grid>
+        <!--Grid-->
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="20"/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="20"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20"/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition Height="20"/>
+        </Grid.RowDefinitions>
         
+        <!--Elements-->
+        
+        <!--Labels-->
+
+        <Label
+            Content="Destination Country"
+            Grid.Row="1"
+            Grid.Column="1"/>
+
+        <Label
+            Content="Destination City"
+            Grid.Row="1"
+            Grid.Column="2"/>
+
+        <Label
+            Content="Travelers"
+            Grid.Row="3"
+            Grid.Column="1"/>
+
+        <Label
+            Content="Other details"
+            Grid.Row="3"
+            Grid.Column="2"/>
+
+        <Label
+            Content="Luggage"
+            Grid.Row="1"
+            Grid.Column="3"/>
+        
+        <!--Textblocks-->
+
+        <TextBox
+            Name="txtCountry"
+            Grid.Row="1"
+            Grid.Column="1"
+            Height="25"
+            Margin="5 20 40 0"
+            IsReadOnly="True"/>
+
+        <TextBox
+            Name="txtCity"
+            Grid.Row="1"
+            Grid.Column="2"
+            Height="25"
+            Margin="5 20 40 0"
+            IsReadOnly="True"/>
+
+        <TextBox
+            Name="txtTravelers"
+            Grid.Row="3"
+            Grid.Column="1"
+            Height="25"
+            Margin="5 20 40 0"
+            IsReadOnly="True"/>
+
+        <TextBox
+            Name="txtDetails"
+            Grid.Row="3"
+            Grid.Column="2"
+            Height="25"
+            Margin="5 20 40 0"
+            IsReadOnly="True"/>
+        
+        <!--Buttons-->
+
+        <Button
+            Name="btnEdit"
+            Content="Edit"
+            Grid.Row="4"
+            Grid.Column="2"
+            Width="65"
+            Height="45"
+            BorderBrush="Transparent"/>
+
+        <Button
+            Name="btnSave"
+            Content="Save"
+            Grid.Row="4"
+            Grid.Column="1"
+            Width="65"
+            Height="45"
+            BorderBrush="Transparent"
+            IsEnabled="False"/>
+
+        <Button
+            Name="btnClose"
+            Content="Close"
+            Grid.Row="6"
+            Grid.Column="1"
+            Width="65"
+            Height="45"
+            BorderBrush="Transparent"/>
+        
+        <!--Others-->
+
+        <ListView
+            Name="lstLuggage"
+            Grid.Row="1"
+            Grid.RowSpan="4"
+            Grid.Column="3"
+            Grid.ColumnSpan="2"
+            Margin="10 25"
+            />
+
     </Grid>
 </Window>
