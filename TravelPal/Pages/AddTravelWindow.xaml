@@ -1,0 +1,159 @@
+﻿<Window x:Class="TravelPal.Pages.AddTravelWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TravelPal.Pages"
+        mc:Ignorable="d"
+        Title="New trip" Height="450" Width="800"
+        ResizeMode="NoResize"
+        Background="MintCream">
+        
+    <Grid>
+        <!--Grid-->
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="20"/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="20"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20"/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition Height="20"/>
+        </Grid.RowDefinitions>
+
+        <!--Elements-->
+        
+        <!--Labels-->
+
+        <Label
+            Content="City"
+            Grid.Row="1"
+            Grid.Column="1"/>
+
+        <Label
+            Content="Country"
+            Grid.Row="1"
+            Grid.Column="2"/>
+
+        <Label
+            Content="Travelers"
+            Grid.Row="3"
+            Grid.Column="1"/>
+
+        <Label
+            Content="Purpose"
+            Grid.Row="3"
+            Grid.Column="2"/>
+
+        <Label
+            Content="Packing"
+            Grid.Row="1"
+            Grid.Column="3"/>
+
+        <Label
+            Content="Is the item a travel document?"
+            Grid.Row="2"
+            Grid.Column="3"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Center"
+            />
+
+
+
+        <!--Textboxes-->
+
+        <TextBox
+            Name="txtCity"
+            Grid.Row="1"
+            Grid.Column="1"
+            Height="25"
+            Margin="5 20 40 0"/>
+
+        <TextBox
+            Name="txtLuggage"
+            Grid.Row="1"
+            Grid.Column="3"
+            Height="25"
+            Margin="5 20 40 0"/>
+
+
+        <!--Comboboxes-->
+
+        <ComboBox
+            Name="cbCountries"
+            Grid.Row="1"
+            Grid.Column="2"
+            Height="25"
+            Margin="5 20 40 0"/>
+
+        <ComboBox
+            Name="cbTravelers"
+            Grid.Row="3"
+            Grid.Column="1"
+            Height="25"
+            Margin="5 20 40 0"/>
+
+        <ComboBox
+            Name="cbPurpose"
+            Grid.Row="3"
+            Grid.Column="2"
+            Height="25"
+            Margin="5 20 40 0"/>
+        
+        <!--Buttons-->
+
+        <Button
+            Name="btnAddPacking"
+            Content="Add to Luggage"
+            Grid.Row="3"
+            Grid.Column="3"
+            Width="105"
+            Height="35"
+            />
+
+        <Button
+            Name="btnAddTravel"
+            Content="Add travel"
+            Grid.Row="4"
+            Grid.Column="1"
+            Width="105"
+            Height="35"/>
+
+        <Button
+            Name="btnClose"
+            Content="Close Window"
+            Grid.Row="6"
+            Grid.Column="4"
+            Width="105"
+            Height="35"/>
+
+
+        <!--Other-->
+
+        <ListView
+            Name="lstLuggage"
+            Grid.Row="1"
+            Grid.RowSpan="3"
+            Grid.Column="4"
+            Margin="0 10 0 0"/>
+
+        <CheckBox
+            Name="chkTravelDocument"
+            Grid.Row="2"
+            Grid.Column="3"
+            HorizontalAlignment="Right"
+            VerticalAlignment="Center"
+            Margin="0 0 5 0"/>
+    </Grid>
+</Window>
