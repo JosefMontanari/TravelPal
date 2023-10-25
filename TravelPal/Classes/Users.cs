@@ -1,4 +1,5 @@
-﻿using TravelPal.Managers;
+﻿using System.Collections.Generic;
+using TravelPal.Managers;
 
 namespace TravelPal.Classes
 {
@@ -17,11 +18,24 @@ namespace TravelPal.Classes
         public string Password { get; set; }
         public Location Country { get; set; }
 
+        public List<Travel> Travels = new();
+
         public User(string username, string password)
         {
             Username = username;
             Password = password;
         }
+        public void AddTravel(Travel travel)
+        {
+            Travels.Add(travel);
+        }
+
+        public void RemoveTravel(Travel travel)
+        {
+            Travels.Remove(travel);
+        }
+
+
     }
 
     public class Admin : iUser

@@ -1,20 +1,27 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Windows.Controls;
+using TravelPal.Classes;
 
 namespace TravelPal.Managers
 {
     public class TravelManager
     {
-        public static List<Travel> travels = new();
-
-        public void AddTravel(Travel travel)
+        public void GetAllTravels(ListView listView)
         {
-            travels.Add(travel);
-        }
 
-        public void RemoveTravel(Travel travel)
-        {
-            travels.Remove(travel);
+            foreach (iUser user in UserManager.Users)
+            {
+                if (user.GetType() == typeof(User))
+                {
+                    User userAsUser = (User)user;
+                    foreach (Travel travel in userAsUser.Travels)
+                    {
+                        listView.Items.Add(travel.Destination);
+
+                    }
+                }
+            }
         }
     }
 
@@ -25,19 +32,19 @@ namespace TravelPal.Managers
 
         public int Travelers { get; set; }
 
-        // TODO Adda list för packinglist
-
+        public List<iPackingListItem> PackingList { get; set; }
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
         public int TravelDays { get; set; }
 
-        public Travel(string destination, Location country, int travelers, DateTime startDate, DateTime endDate)
+        public Travel(string destination, Location country, int travelers, DateTime startDate, DateTime endDate, List<iPackingListItem> packingList)
         {
             Destination = destination;
             Country = country;
             Travelers = travelers;
             StartDate = startDate;
             EndDate = endDate;
+            PackingList = packingList;
             TravelDays = CalculateTravelDays(startDate, endDate);
         }
 
@@ -65,7 +72,7 @@ namespace TravelPal.Managers
     {
         public string MeetingDetails { get; set; }
 
-        public WorkTrip(string destination, Location country, int travelers, DateTime startDate, DateTime endDate, string meetingDetails) : base(destination, country, travelers, startDate, endDate)
+        public WorkTrip(string destination, Location country, int travelers, DateTime startDate, DateTime endDate, string meetingDetails, List<iPackingListItem> packingList) : base(destination, country, travelers, startDate, endDate, packingList)
         {
             MeetingDetails = meetingDetails;
         }
@@ -80,7 +87,7 @@ namespace TravelPal.Managers
     {
         public bool AllInclusive { get; set; }
 
-        public Vacation(string destination, Location country, int travelers, DateTime startDate, DateTime endDate, bool allInclusive) : base(destination, country, travelers, startDate, endDate)
+        public Vacation(string destination, Location country, int travelers, DateTime startDate, DateTime endDate, bool allInclusive, List<iPackingListItem> packingList) : base(destination, country, travelers, startDate, endDate, packingList)
         {
             AllInclusive = allInclusive;
         }
