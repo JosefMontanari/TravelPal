@@ -1,6 +1,6 @@
 ﻿namespace TravelPal.Managers
 {
-    public class Enums
+    public class Location
     {
         enum EuropeanCountry
         {
