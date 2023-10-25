@@ -8,8 +8,8 @@ namespace TravelPal.Managers
     {
         public static List<iUser> Users = new()
         {
-            new User ("User", "password"),
-            new Admin("Admin","password")
+            new User ("user", "password"),
+            new Admin("admin","password")
         };
 
         public iUser SignedInUser { get; set; }
@@ -89,7 +89,7 @@ namespace TravelPal.Managers
             Users.Remove(user);
         }
 
-        public bool SignInUser(string username, string password)
+        public iUser SignInUser(string username, string password)
         {
             bool isValid = false;
             foreach (iUser user in Users)
@@ -101,8 +101,15 @@ namespace TravelPal.Managers
                 }
 
             }
+            if (isValid)
+            {
+                return SignedInUser;
 
-            return isValid;
+            }
+            else
+            {
+                return null;
+            }
         }
     }
 }
