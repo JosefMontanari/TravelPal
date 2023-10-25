@@ -31,7 +31,7 @@ namespace TravelPal.Managers
 
         public virtual string GetInfo()
         {
-            return $"Destination: {Destination}, {Country}. ";
+            return $"Destination: {Destination}, {Country}. Travelers: {Travelers}. Duration: {TravelDays} days.";
         }
 
         private int CalculateTravelDays(DateTime startDate, DateTime endDate)
@@ -46,6 +46,41 @@ namespace TravelPal.Managers
             var daysInDays = days.Days;
 
             return daysInDays;
+        }
+    }
+
+    public class WorkTrip : Travel
+    {
+        public string MeetingDetails { get; set; }
+
+        public WorkTrip(string destination, Location country, int travelers, DateTime startDate, DateTime endDate, string meetingDetails) : base(destination, country, travelers, startDate, endDate)
+        {
+            MeetingDetails = meetingDetails;
+        }
+
+        public override string GetInfo()
+        {
+            return base.GetInfo() + $" Meeting details: {MeetingDetails}";
+        }
+    }
+
+    public class Vacation : Travel
+    {
+        public bool AllInclusive { get; set; }
+
+        public Vacation(string destination, Location country, int travelers, DateTime startDate, DateTime endDate, bool allInclusive) : base(destination, country, travelers, startDate, endDate)
+        {
+            AllInclusive = allInclusive;
+        }
+
+        public override string GetInfo()
+        {
+            if (AllInclusive)
+            {
+                return base.GetInfo() + $"All inclusive";
+
+            }
+            else { return base.GetInfo(); }
         }
     }
 }
