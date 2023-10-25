@@ -8,7 +8,7 @@ namespace TravelPal.Classes
         public string Username { get; set; }
         public string Password { get; set; }
 
-        public Location Country { get; set; }
+        public Country Country { get; set; }
 
     }
 
@@ -16,7 +16,7 @@ namespace TravelPal.Classes
     {
         public string Username { get; set; }
         public string Password { get; set; }
-        public Location Country { get; set; }
+        public Country Country { get; set; }
 
         public List<Travel> Travels = new();
 
@@ -42,7 +42,7 @@ namespace TravelPal.Classes
     {
         public string Username { get; set; }
         public string Password { get; set; }
-        public Location Country { get; set; }
+        public Country Country { get; set; }
 
         public Admin(string username, string password)
         {

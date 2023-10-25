@@ -28,7 +28,7 @@ namespace TravelPal.Managers
     public class Travel
     {
         public string Destination { get; set; }
-        public Location Country { get; set; }
+        public Country Country { get; set; }
 
         public int Travelers { get; set; }
 
@@ -37,7 +37,7 @@ namespace TravelPal.Managers
         public DateTime EndDate { get; set; }
         public int TravelDays { get; set; }
 
-        public Travel(string destination, Location country, int travelers, DateTime startDate, DateTime endDate, List<iPackingListItem> packingList)
+        public Travel(string destination, Country country, int travelers, DateTime startDate, DateTime endDate, List<iPackingListItem> packingList)
         {
             Destination = destination;
             Country = country;
@@ -72,7 +72,7 @@ namespace TravelPal.Managers
     {
         public string MeetingDetails { get; set; }
 
-        public WorkTrip(string destination, Location country, int travelers, DateTime startDate, DateTime endDate, string meetingDetails, List<iPackingListItem> packingList) : base(destination, country, travelers, startDate, endDate, packingList)
+        public WorkTrip(string destination, Country country, int travelers, DateTime startDate, DateTime endDate, string meetingDetails, List<iPackingListItem> packingList) : base(destination, country, travelers, startDate, endDate, packingList)
         {
             MeetingDetails = meetingDetails;
         }
@@ -87,7 +87,7 @@ namespace TravelPal.Managers
     {
         public bool AllInclusive { get; set; }
 
-        public Vacation(string destination, Location country, int travelers, DateTime startDate, DateTime endDate, bool allInclusive, List<iPackingListItem> packingList) : base(destination, country, travelers, startDate, endDate, packingList)
+        public Vacation(string destination, Country country, int travelers, DateTime startDate, DateTime endDate, bool allInclusive, List<iPackingListItem> packingList) : base(destination, country, travelers, startDate, endDate, packingList)
         {
             AllInclusive = allInclusive;
         }

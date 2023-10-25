@@ -25,6 +25,8 @@ namespace TravelPal
             if (user != null)
             {
                 TravelsWindow travelsWindow = new TravelsWindow(user);
+                travelsWindow.Show();
+                Close();
             }
             else
             {
@@ -34,7 +36,9 @@ namespace TravelPal
 
         private void btnRegister_Click(object sender, RoutedEventArgs e)
         {
-
+            RegisterWindow registerWindow = new RegisterWindow();
+            registerWindow.Show();
+            Close();
         }
     }
 }
