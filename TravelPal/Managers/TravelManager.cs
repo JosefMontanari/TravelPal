@@ -1,9 +1,21 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace TravelPal.Managers
 {
     public class TravelManager
     {
+        public static List<Travel> travels = new();
+
+        public void AddTravel(Travel travel)
+        {
+            travels.Add(travel);
+        }
+
+        public void RemoveTravel(Travel travel)
+        {
+            travels.Remove(travel);
+        }
     }
 
     public class Travel
