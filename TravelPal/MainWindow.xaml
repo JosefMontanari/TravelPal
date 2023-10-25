@@ -26,7 +26,7 @@
             <RowDefinition Height="20"/>
             <RowDefinition/>
             <RowDefinition/>
-            <RowDefinition>
+            <RowDefinition/>
             <RowDefinition Height="20"/>
         </Grid.RowDefinitions>
         
@@ -40,7 +40,8 @@
             Grid.Column="1"
             FontSize="36"
             FontFamily="Arial"
-            Foreground="MediumSlateBlue"/>
+            Foreground="MediumSlateBlue"
+            ToolTip="Eat shit and die"/>
 
         <Label
             Content="Username"
