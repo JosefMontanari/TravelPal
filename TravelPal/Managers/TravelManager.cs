@@ -19,14 +19,33 @@ namespace TravelPal.Managers
         public DateTime EndDate { get; set; }
         public int TravelDays { get; set; }
 
-        public Travel(string destination, Location country, int travelers, DateTime startDate, DateTime endDate, int travelDays)
+        public Travel(string destination, Location country, int travelers, DateTime startDate, DateTime endDate)
         {
             Destination = destination;
             Country = country;
             Travelers = travelers;
             StartDate = startDate;
             EndDate = endDate;
-            TravelDays = travelDays;
+            TravelDays = CalculateTravelDays(startDate, endDate);
+        }
+
+        public virtual string GetInfo()
+        {
+            return $"Destination: {Destination}, {Country}. ";
+        }
+
+        private int CalculateTravelDays(DateTime startDate, DateTime endDate)
+        {
+            var dateAndTime = startDate;
+            var dateOnly = dateAndTime.Date;
+
+            var dateAndTimeTwo = endDate;
+            var dateOnlyTwo = dateAndTimeTwo.Date;
+
+            var days = dateOnlyTwo - dateOnly;
+            var daysInDays = days.Days;
+
+            return daysInDays;
         }
     }
 }
