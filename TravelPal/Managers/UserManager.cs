@@ -4,18 +4,18 @@ using TravelPal.Classes;
 
 namespace TravelPal.Managers
 {
-    public class UserManager
+    public static class UserManager
     {
         public static List<iUser> Users = new()
         {
-            new User {Username = "user", Password = "password" },
-            new Admin{Username = "admin",Password = "password" }
+            new User {Username = "user", Password = "password", Country = Country.Sweden},
+            new Admin{Username = "admin",Password = "password", Country = Country.Sweden}
         };
 
-        public iUser SignedInUser { get; set; }
+        public static iUser SignedInUser { get; set; }
 
 
-        public bool AddUser(User user)
+        public static bool AddUser(User user)
         {
             if (ValidateUsername(user.Username))
             {
@@ -37,7 +37,7 @@ namespace TravelPal.Managers
             }
         }
 
-        private bool ValidateUsername(string username)
+        private static bool ValidateUsername(string username)
         {
             bool isValid = true;
             if (!string.IsNullOrWhiteSpace(username) && username.Length > 3)
@@ -63,7 +63,7 @@ namespace TravelPal.Managers
 
         }
 
-        private bool ValidatePassword(string password)
+        private static bool ValidatePassword(string password)
         {
             bool isValid = true;
             if (string.IsNullOrWhiteSpace(password) || password.Length < 3)
@@ -75,7 +75,7 @@ namespace TravelPal.Managers
 
         }
 
-        public void UpdateUsername(iUser user, string newUsername)
+        public static void UpdateUsername(iUser user, string newUsername)
         {
             if (ValidateUsername(newUsername))
             {
@@ -84,13 +84,13 @@ namespace TravelPal.Managers
 
         }
 
-        public void RemoveUser(iUser user)
+        public static void RemoveUser(iUser user)
         {
             MessageBox.Show($"{user.Username} successfully removed!");
             Users.Remove(user);
         }
 
-        public iUser SignInUser(string username, string password)
+        public static iUser SignInUser(string username, string password)
         {
             bool isValid = false;
             foreach (iUser user in Users)

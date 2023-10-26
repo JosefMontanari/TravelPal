@@ -33,32 +33,32 @@ namespace TravelPal.Pages
             if (txtPassword.Password == txtPasswordConfirm.Password)
             {
 
-                UserManager userManager = new UserManager();
                 User user = new();
                 user.Username = txtUsername.Text;
                 user.Password = txtPasswordConfirm.Password.ToString();
-                try
+                if (cbCountries.SelectedIndex != -1)
                 {
                     user.Country = (Country)cbCountries.SelectedItem;
-                    if (userManager.AddUser(user))
+                    if (UserManager.AddUser(user))
                     {
                         MessageBox.Show("You have now been registred! Welcome!");
                     }
 
-                    else
-                    {
-                        MessageBox.Show("Passwords do not match, please try again!");
-                    }
+
                 }
 
 
-                catch (NullReferenceException ex)
+                else
                 {
                     MessageBox.Show("You need to select a country of origin!");
                 }
 
 
 
+            }
+            else
+            {
+                MessageBox.Show("Passwords do not match, please try again!");
             }
         }
     }

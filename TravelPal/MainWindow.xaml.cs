@@ -19,8 +19,7 @@ namespace TravelPal
         {
             string username = txtUsername.Text;
             string password = txtPassword.Password.ToString();
-            UserManager userManager = new UserManager();
-            iUser user = userManager.SignInUser(username, password);
+            iUser user = UserManager.SignInUser(username, password);
 
             if (user != null)
             {
