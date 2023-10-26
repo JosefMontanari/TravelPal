@@ -7,6 +7,7 @@ namespace TravelPal.Managers
 {
     public static class TravelManager
     {
+
         public static void GetAllTravels(ListView listView)
         {
 
@@ -17,7 +18,7 @@ namespace TravelPal.Managers
                     User userAsUser = (User)user;
                     foreach (Travel travel in userAsUser.Travels)
                     {
-                        listView.Items.Add(travel.Destination);
+                        listView.Items.Add(travel.Destination + " " + user.Username);
 
                     }
                 }
