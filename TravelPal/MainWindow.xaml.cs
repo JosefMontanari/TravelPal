@@ -13,6 +13,18 @@ namespace TravelPal
         public MainWindow()
         {
             InitializeComponent();
+            foreach (iUser user in UserManager.Users)
+            {
+                if (user.GetType() == typeof(User))
+                {
+                    User thisUser = (User)user;
+                    if (user.Username == "user")
+                    {
+                        thisUser.AddTravels();
+                    }
+
+                }
+            }
         }
 
         private void btnLogin_Click(object sender, RoutedEventArgs e)

@@ -22,11 +22,27 @@ namespace TravelPal.Pages
                 {
                     ListViewItem listViewItem = new ListViewItem();
                     listViewItem.Tag = travel;
-                    listViewItem.Content = travel.Destination;
-                    lstTravels.Items.Add(travel);
+                    listViewItem.Content = travel.Destination.ToString();
+                    lstTravels.Items.Add(listViewItem);
                 }
 
             }
+
+        }
+
+        private void btnSignOut_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow main = new MainWindow();
+            main.Show();
+            Close();
+        }
+
+        private void btnRemove_Click(object sender, RoutedEventArgs e)
+        {
+            ListViewItem selectedItem = new ListViewItem();
+            selectedItem = (ListViewItem)lstTravels.SelectedItem;
+
+
 
         }
     }

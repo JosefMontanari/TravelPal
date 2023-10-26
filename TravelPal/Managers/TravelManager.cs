@@ -5,9 +5,9 @@ using TravelPal.Classes;
 
 namespace TravelPal.Managers
 {
-    public class TravelManager
+    public static class TravelManager
     {
-        public void GetAllTravels(ListView listView)
+        public static void GetAllTravels(ListView listView)
         {
 
             foreach (iUser user in UserManager.Users)

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using TravelPal.Managers;
 
 namespace TravelPal.Classes
@@ -29,6 +30,18 @@ namespace TravelPal.Classes
         public void RemoveTravel(Travel travel)
         {
             Travels.Remove(travel);
+        }
+
+        // Metod för att lägga till två travels till den bestämda usern ("user", "password")
+        public void AddTravels()
+        {
+            List<iPackingListItem> packingList = new List<iPackingListItem>();
+
+            Travel travelOne = new("Stockholm", Country.Sweden, 4, DateTime.Now, DateTime.Now, packingList);
+            Travels.Add(travelOne);
+            Travel travelTwo = new("London", Country.UK, 4, DateTime.Now, DateTime.Now, packingList);
+            Travels.Add(travelTwo);
+
         }
 
 

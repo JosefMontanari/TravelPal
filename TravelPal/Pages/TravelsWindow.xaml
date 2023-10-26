@@ -52,16 +52,13 @@
 
         <Label
             Content="About TravelPal"
-            ToolTip="TravelPal was founded 1997 by 
-            Tom Cruise and Steve Wozniak"
+            ToolTip="TravelPal was founded 1997 by Tom Cruise and Steve Wozniak"
             Grid.Row="5"
             Grid.Column="1"/>
 
         <Label
             Content="Need help?"
-            ToolTip="Add travel to your travelpal or remove by clicking the buttons,
-            You can also view your travelling details by selecting a travel and clicking
-            Details"
+            ToolTip="Add travel to your  travelpal or remove, you can also see details"
             Grid.Row="5"
             Grid.Column="2"/>
 
@@ -98,7 +95,7 @@
             Height="45"
             BorderBrush="Transparent"
             HorizontalAlignment="Right"
-            Margin="0 0 5 0 "/>
+            Margin="0 0 5 0 " Click="btnRemove_Click"/>
 
         <Button
             Name="btnSignOut"
@@ -109,7 +106,7 @@
             Height="45"
             BorderBrush="Transparent"
             HorizontalAlignment="Right"
-            Margin="0 0 5 0 "/>
+            Margin="0 0 5 0 " Click="btnSignOut_Click"/>
 
         <!--Others-->
 

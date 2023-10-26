@@ -6,10 +6,12 @@ namespace TravelPal.Managers
 {
     public static class UserManager
     {
+
         public static List<iUser> Users = new()
         {
             new User {Username = "user", Password = "password", Country = Country.Sweden},
             new Admin{Username = "admin",Password = "password", Country = Country.Sweden}
+
         };
 
         public static iUser SignedInUser { get; set; }
