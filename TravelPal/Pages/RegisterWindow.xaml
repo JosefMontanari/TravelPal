@@ -97,7 +97,7 @@
             Grid.Row="4"
             Grid.Column="3"
             Height="55"
-            Width="115"/>
+            Width="115" Click="btnRegister_Click"/>
 
         <!--Lägger till en extra knapp för att stänga
         fönstret ifall man ångrar sig-->
@@ -107,7 +107,7 @@
             Grid.Row="4"
             Grid.Column="4"
             Height="55"
-            Width="115"
+            Width="115" Click="btnClose_Click"
             />
         
         <!--Others-->

@@ -8,19 +8,20 @@ namespace TravelPal.Managers
     {
         public static List<iUser> Users = new()
         {
-            new User ("user", "password"),
-            new Admin("admin","password")
+            new User {Username = "user", Password = "password" },
+            new Admin{Username = "admin",Password = "password" }
         };
 
         public iUser SignedInUser { get; set; }
 
 
-        public bool AddUser(iUser user)
+        public bool AddUser(User user)
         {
             if (ValidateUsername(user.Username))
             {
                 if (ValidatePassword(user.Password))
                 {
+                    Users.Add(user);
                     return true;
 
                 }
@@ -65,7 +66,7 @@ namespace TravelPal.Managers
         private bool ValidatePassword(string password)
         {
             bool isValid = true;
-            if (string.IsNullOrWhiteSpace(password) && password.Length < 3)
+            if (string.IsNullOrWhiteSpace(password) || password.Length < 3)
             {
                 MessageBox.Show("Password needs to be at least three characters!");
                 isValid = false;

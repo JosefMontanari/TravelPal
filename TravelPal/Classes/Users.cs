@@ -20,11 +20,7 @@ namespace TravelPal.Classes
 
         public List<Travel> Travels = new();
 
-        public User(string username, string password)
-        {
-            Username = username;
-            Password = password;
-        }
+
         public void AddTravel(Travel travel)
         {
             Travels.Add(travel);
@@ -44,11 +40,7 @@ namespace TravelPal.Classes
         public string Password { get; set; }
         public Country Country { get; set; }
 
-        public Admin(string username, string password)
-        {
-            Username = username;
-            Password = password;
-        }
+
 
     }
 }
