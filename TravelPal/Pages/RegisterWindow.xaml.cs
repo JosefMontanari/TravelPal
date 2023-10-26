@@ -22,7 +22,7 @@ namespace TravelPal.Pages
 
         private void btnClose_Click(object sender, RoutedEventArgs e)
         {
-            MainWindow mainWindow = new MainWindow();
+            MainWindow mainWindow = new MainWindow("yes");
             mainWindow.Show();
             Close();
         }

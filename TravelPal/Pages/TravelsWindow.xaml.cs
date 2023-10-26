@@ -34,7 +34,7 @@ namespace TravelPal.Pages
 
         private void btnSignOut_Click(object sender, RoutedEventArgs e)
         {
-            MainWindow main = new MainWindow();
+            MainWindow main = new MainWindow("yes");
             main.Show();
             Close();
         }
@@ -60,6 +60,27 @@ namespace TravelPal.Pages
 
 
 
+        }
+
+        private void btnDetails_Click(object sender, RoutedEventArgs e)
+        {
+            if (lstTravels.Items.Count > 0 && lstTravels.SelectedIndex != -1)
+            {
+                ListViewItem selectedItem = new ListViewItem();
+                selectedItem = (ListViewItem)lstTravels.SelectedItem;
+                Travel selectedTravel = (Travel)selectedItem.Tag;
+
+                TravelDetails travelDetails = new TravelDetails(selectedTravel, user);
+                travelDetails.Show();
+                Close();
+
+
+
+            }
+            else
+            {
+                MessageBox.Show("You must select an existing travel");
+            }
         }
     }
 }

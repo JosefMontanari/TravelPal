@@ -37,9 +37,9 @@ namespace TravelPal.Classes
         {
             List<iPackingListItem> packingList = new List<iPackingListItem>();
 
-            Travel travelOne = new("Stockholm", Country.Sweden, 4, DateTime.Now, DateTime.Now, packingList);
+            Vacation travelOne = new("Stockholm", Country.Sweden, 4, DateTime.Now, DateTime.Now, true, packingList);
             Travels.Add(travelOne);
-            Travel travelTwo = new("London", Country.UK, 4, DateTime.Now, DateTime.Now, packingList);
+            WorkTrip travelTwo = new("London", Country.UK, 4, DateTime.Now, DateTime.Now, "Meeting Albin to discuss my project", packingList);
             Travels.Add(travelTwo);
 
         }

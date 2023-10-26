@@ -83,7 +83,7 @@
             Width="65"
             Height="45"
             BorderBrush="Transparent"
-            HorizontalAlignment="Center"/>
+            HorizontalAlignment="Center" Click="btnDetails_Click"/>
 
 
         <Button

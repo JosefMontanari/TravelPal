@@ -27,6 +27,12 @@ namespace TravelPal
             }
         }
 
+        // Ny Construktor så att inte travels resettas varje gång
+        public MainWindow(string whatever)
+        {
+            InitializeComponent();
+        }
+
         private void btnLogin_Click(object sender, RoutedEventArgs e)
         {
             string username = txtUsername.Text;
