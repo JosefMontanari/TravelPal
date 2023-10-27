@@ -122,38 +122,101 @@ namespace TravelPal.Pages
             if (!string.IsNullOrWhiteSpace(txtCity.Text) && !string.IsNullOrWhiteSpace(txtCountry.Text))
             {
                 bool isCorrectCountry = false;
+                Country newCountry = travel.Country;
                 foreach (Country country in Enum.GetValues(typeof(Country)))
                 {
                     if (txtCountry.Text == country.ToString())
                     {
                         isCorrectCountry = true;
+                        newCountry = country;
                     }
                 }
                 if (!isCorrectCountry)
                 {
                     MessageBox.Show("Please input a valid country");
                 }
-
-                bool isCorrectTravelers = int.TryParse(txtTravelers.Text, out int travelersCount);
-
-                if (!isCorrectTravelers)
+                else
                 {
-                    MessageBox.Show("Please write the amount of travelers in numbers");
+                    bool isCorrectTravelers = int.TryParse(txtTravelers.Text, out int travelersCount);
+
+                    if (!isCorrectTravelers)
+                    {
+                        MessageBox.Show("Please write the amount of travelers in numbers");
+                    }
+                    else
+                    {
+                        if (txtAllInclusive.IsReadOnly)
+                        {
+                            // Kolla så att meeting details är ifyllt
+                            if (string.IsNullOrWhiteSpace(txtMeetingDetails.Text))
+                            {
+                                MessageBox.Show("Please fill in the details of your meeting");
+                            }
+                            else
+                            {
+                                //Spara de nya uppgifterna i klassen
+                                WorkTrip workTrip = (WorkTrip)travel;
+                                workTrip.Destination = txtCity.Text;
+                                workTrip.Travelers = travelersCount;
+                                workTrip.Country = newCountry;
+                                workTrip.MeetingDetails = txtMeetingDetails.Text;
+
+                                travel = workTrip;
+
+                            }
+
+
+                        }
+                        else if (txtMeetingDetails.IsReadOnly)
+                        {
+                            // Kolla så att all inclusive är korrekt ifyllt
+                            if (txtAllInclusive.Text == "Yes" || txtAllInclusive.Text == "yes")
+                            {
+                                //Spara de nya uppgifterna i klassen
+                                Vacation vacation = (Vacation)travel;
+                                vacation.Destination = txtCity.Text;
+                                vacation.Travelers = travelersCount;
+                                vacation.Country = newCountry;
+                                vacation.AllInclusive = true;
+
+                                travel = vacation;
+
+                            }
+                            else if (txtAllInclusive.Text == "No" || txtAllInclusive.Text == "no")
+                            {
+                                //Spara de nya uppgifterna i klassen
+                                Vacation vacation = (Vacation)travel;
+                                vacation.Destination = txtCity.Text;
+                                vacation.Travelers = travelersCount;
+                                vacation.Country = newCountry;
+                                vacation.AllInclusive = false;
+
+                                travel = vacation;
+
+                            }
+                            else
+                            {
+                                MessageBox.Show("All inclusive needs to be either yes or no!");
+                            }
+
+                        }
+
+                    }
+
                 }
 
-                if (txtAllInclusive.IsReadOnly)
-                {
-                    // Kolla så att meeting details är ifyllt
-                }
-                else if (txtMeetingDetails.IsReadOnly)
-                {
-                    // Kolla så att all inclusive är korrekt ifyllt
-                }
+                btnSave.IsEnabled = false;
+                btnEdit.IsEnabled = true;
+                txbValidCountries.Visibility = Visibility.Hidden;
 
             }
 
+            else
+            {
+                MessageBox.Show("Please fill in all the unlocked textboxes.");
+            }
 
-            //Spara de nya uppgifterna i klassen
+
         }
     }
 }

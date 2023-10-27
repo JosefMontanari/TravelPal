@@ -24,7 +24,7 @@ namespace TravelPal.Pages
                 {
                     ListViewItem listViewItem = new ListViewItem();
                     listViewItem.Tag = travel;
-                    listViewItem.Content = travel.Destination.ToString();
+                    listViewItem.Content = travel.Destination.ToString() + ", " + travel.Country.ToString();
                     lstTravels.Items.Add(listViewItem);
                 }
 

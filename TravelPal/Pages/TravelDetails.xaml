@@ -64,7 +64,9 @@
             Content="Luggage"
             Grid.Row="1"
             Grid.Column="3"/>
-        
+
+
+
         <!--Textblocks-->
 
         <TextBox
@@ -129,7 +131,7 @@
             Width="65"
             Height="45"
             BorderBrush="Transparent"
-            IsEnabled="False"/>
+            IsEnabled="False" Click="btnSave_Click"/>
 
         <Button
             Name="btnClose"
@@ -149,6 +151,18 @@
             Grid.Column="3"
             Grid.ColumnSpan="2"
             Margin="10 25"
+            />
+        
+        <TextBlock
+            Name="txbValidCountries"
+            TextWrapping="Wrap"
+            Text="Sweden, Denmark, Finland, Italy, 
+            France, Germany, USA, UK,
+            Australia, Lebanon, China, Japan,
+            Argentina, Brazil"
+            Grid.Row="2"
+            Grid.Column="1"
+            Visibility="Hidden"
             />
 
     </Grid>
