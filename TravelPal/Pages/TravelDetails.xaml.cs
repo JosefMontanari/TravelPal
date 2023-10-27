@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System;
+using System.Windows;
 using System.Windows.Controls;
 using TravelPal.Classes;
 using TravelPal.Managers;
@@ -21,6 +22,7 @@ namespace TravelPal.Pages
             LoadAllInfo();
         }
 
+        // Metod som hämtar alla info om resan och stoppar in den i rutorna
         public void LoadAllInfo()
         {
             if (travel.GetType() == typeof(Vacation))
@@ -40,9 +42,8 @@ namespace TravelPal.Pages
 
                 foreach (iPackingListItem packingItem in vacation.PackingList)
                 {
-                    ListViewItem listViewItem = new ListViewItem();
-                    listViewItem.Tag = packingItem;
-                    lstLuggage.Items.Add(listViewItem);
+                    DisplayAllPackingItems(packingItem);
+
                 }
 
             }
@@ -56,10 +57,31 @@ namespace TravelPal.Pages
 
                 foreach (iPackingListItem packingItem in worktrip.PackingList)
                 {
-                    ListViewItem listViewItem = new ListViewItem();
-                    listViewItem.Tag = packingItem;
-                    lstLuggage.Items.Add(listViewItem);
+                    DisplayAllPackingItems(packingItem);
+
                 }
+            }
+        }
+
+        // Metod som loopar över alla packingitems och displayar dem
+        private void DisplayAllPackingItems(iPackingListItem packingItem)
+        {
+            if (packingItem.GetType() == typeof(TravelDocument))
+            {
+                TravelDocument travelDocument = (TravelDocument)packingItem;
+                ListViewItem listViewItem = new ListViewItem();
+                listViewItem.Tag = packingItem;
+                listViewItem.Content = travelDocument.Name + " " + travelDocument.Required;
+                lstLuggage.Items.Add(listViewItem);
+
+            }
+            else if (packingItem.GetType() == typeof(OtherItem))
+            {
+                OtherItem otherItem = (OtherItem)packingItem;
+                ListViewItem listViewItem = new ListViewItem();
+                listViewItem.Tag = packingItem;
+                listViewItem.Content = otherItem.Name + " " + otherItem.Quantity.ToString();
+                lstLuggage.Items.Add(listViewItem);
             }
         }
 
@@ -69,6 +91,69 @@ namespace TravelPal.Pages
             travelsWindow.Show();
             Close();
 
+        }
+
+        private void btnEdit_Click(object sender, RoutedEventArgs e)
+        {
+            btnEdit.IsEnabled = false;
+            btnSave.IsEnabled = true;
+
+            if (travel.GetType() == typeof(Vacation))
+            {
+                txtAllInclusive.IsReadOnly = false;
+
+            }
+            txtCity.IsReadOnly = false;
+            txtCountry.IsReadOnly = false;
+            txtTravelers.IsReadOnly = false;
+            if (travel.GetType() == typeof(WorkTrip))
+            {
+                txtMeetingDetails.IsReadOnly = false;
+
+            }
+
+            txbValidCountries.Visibility = Visibility.Visible;
+        }
+
+        private void btnSave_Click(object sender, RoutedEventArgs e)
+        {
+            // Kolla så alla fälten är korrekt ifyllda
+
+            if (!string.IsNullOrWhiteSpace(txtCity.Text) && !string.IsNullOrWhiteSpace(txtCountry.Text))
+            {
+                bool isCorrectCountry = false;
+                foreach (Country country in Enum.GetValues(typeof(Country)))
+                {
+                    if (txtCountry.Text == country.ToString())
+                    {
+                        isCorrectCountry = true;
+                    }
+                }
+                if (!isCorrectCountry)
+                {
+                    MessageBox.Show("Please input a valid country");
+                }
+
+                bool isCorrectTravelers = int.TryParse(txtTravelers.Text, out int travelersCount);
+
+                if (!isCorrectTravelers)
+                {
+                    MessageBox.Show("Please write the amount of travelers in numbers");
+                }
+
+                if (txtAllInclusive.IsReadOnly)
+                {
+                    // Kolla så att meeting details är ifyllt
+                }
+                else if (txtMeetingDetails.IsReadOnly)
+                {
+                    // Kolla så att all inclusive är korrekt ifyllt
+                }
+
+            }
+
+
+            //Spara de nya uppgifterna i klassen
         }
     }
 }
