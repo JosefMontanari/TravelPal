@@ -56,21 +56,13 @@ namespace TravelPal.Pages
                     if (chkRequired.IsChecked == true)
                     {
                         isRequired = true;
-                        required = " Required";
                     }
                     else
                     {
                         isRequired = false;
-                        required = " Not required";
                     }
 
-                    TravelDocument travelDocument = new(name, isRequired);
-
-                    ListViewItem listViewItem = new();
-                    listViewItem.Tag = travelDocument;
-
-                    listViewItem.Content = travelDocument.Name + required;
-                    lstLuggage.Items.Add(listViewItem);
+                    AddTravelDocument(name, isRequired);
 
                     ClearLuggageFields();
                 }
@@ -108,6 +100,28 @@ namespace TravelPal.Pages
                 MessageBox.Show("You have to give the packing item a name!");
             }
 
+        }
+
+        private void AddTravelDocument(string name, bool isRequired)
+        {
+            TravelDocument travelDocument = new(name, isRequired);
+
+            ListViewItem listViewItem = new();
+            listViewItem.Tag = travelDocument;
+
+            if (isRequired)
+            {
+
+                listViewItem.Content = travelDocument.Name + " Required";
+
+            }
+            else
+            {
+
+                listViewItem.Content = travelDocument.Name + " Not required";
+
+            }
+            lstLuggage.Items.Add(listViewItem);
         }
 
         private void ClearLuggageFields()
@@ -176,7 +190,9 @@ namespace TravelPal.Pages
 
         private void cbCountries_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-
+            // Kolla om det finns ett travel document "passport" i listan redan, i så fall ersätter vi detta
+            // Kolla om användaren är från europa
+            // Kolla om destinationen är i europa
         }
     }
 }
