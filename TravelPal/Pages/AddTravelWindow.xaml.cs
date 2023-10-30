@@ -112,13 +112,13 @@ namespace TravelPal.Pages
             if (isRequired)
             {
 
-                listViewItem.Content = travelDocument.Name + " Required";
+                listViewItem.Content = travelDocument.Name + " (Required)";
 
             }
             else
             {
 
-                listViewItem.Content = travelDocument.Name + " Not required";
+                listViewItem.Content = travelDocument.Name + " (Not required)";
 
             }
             lstLuggage.Items.Add(listViewItem);
@@ -190,9 +190,61 @@ namespace TravelPal.Pages
 
         private void cbCountries_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            bool userIsEuropean = false;
+            bool countryIsEuropean = false;
             // Kolla om det finns ett travel document "passport" i listan redan, i så fall ersätter vi detta
+            for (int i = 0; i < lstLuggage.Items.Count; i++)
+            {
+                ListViewItem listViewItem = (ListViewItem)lstLuggage.Items[i];
+
+                if (listViewItem.ToString().Contains("Passport") || listViewItem.ToString().Contains("passport"))
+                {
+                    lstLuggage.Items.Remove(listViewItem);
+                }
+
+            }
+
             // Kolla om användaren är från europa
+            foreach (Country countries in Enum.GetValues(typeof(EuropeanCountry)))
+            {
+                if (user.Country == countries)
+                {
+                    userIsEuropean = true;
+                }
+            }
+
             // Kolla om destinationen är i europa
+            foreach (Country countries in Enum.GetValues(typeof(EuropeanCountry)))
+            {
+                if ((Country)cbCountries.SelectedItem == countries)
+                {
+                    countryIsEuropean = true;
+                }
+            }
+
+
+            // Om användaren är från samma land behövs inte ett passport oavset vad
+            if (user.Country == (Country)cbCountries.SelectedItem)
+            {
+                AddTravelDocument("Passport", false);
+
+            }
+            else if (!userIsEuropean)
+            {
+                AddTravelDocument("Passport", true);
+            }
+
+            else if (!countryIsEuropean)
+            {
+                AddTravelDocument("Passport", true);
+
+            }
+
+            else
+            {
+                AddTravelDocument("Passport", false);
+
+            }
         }
     }
 }

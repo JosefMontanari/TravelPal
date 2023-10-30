@@ -42,6 +42,9 @@ namespace TravelPal.Pages
                     if (UserManager.AddUser(user))
                     {
                         MessageBox.Show("You have now been registred! Welcome!");
+                        txtPassword.Clear();
+                        txtPasswordConfirm.Clear();
+                        txtUsername.Clear();
                     }
 
 
@@ -60,6 +63,8 @@ namespace TravelPal.Pages
             {
                 MessageBox.Show("Passwords do not match, please try again!");
             }
+
+
         }
     }
 }
