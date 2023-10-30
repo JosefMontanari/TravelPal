@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
 using TravelPal.Classes;
@@ -185,6 +186,40 @@ namespace TravelPal.Pages
             else
             {
                 // TODO lägg till resa
+
+                if (cbPurpose.SelectedIndex == 0)
+                {
+                    //Vacation
+                    List<iPackingListItem> packingList = new();
+                    foreach (ListViewItem item in lstLuggage.Items)
+                    {
+
+                        iPackingListItem packingItem = (iPackingListItem)item.Tag;
+                        packingList.Add(packingItem);
+
+                    }
+
+                    Vacation vacation = new(txtCity.Text, (Country)cbCountries.SelectedItem, (int)cbTravelers.SelectedItem,
+                        (DateTime)dtpStart.SelectedDate, (DateTime)dtpEnd.SelectedDate, (bool)chkAllInclusive.IsChecked, packingList);
+
+                    user.Travels.Add(vacation);
+                }
+                else if (cbPurpose.SelectedIndex == 1)
+                {
+                    //Worktrip
+                    List<iPackingListItem> packingList = new();
+                    foreach (ListViewItem item in lstLuggage.Items)
+                    {
+
+                        iPackingListItem packingItem = (iPackingListItem)item.Tag;
+                        packingList.Add(packingItem);
+
+                    }
+                    WorkTrip workTrip = new(txtCity.Text, (Country)cbCountries.SelectedItem, (int)cbTravelers.SelectedItem,
+                        (DateTime)dtpStart.SelectedDate, (DateTime)dtpEnd.SelectedDate, txtMeetingDetails.Text, packingList);
+
+                    user.Travels.Add(workTrip);
+                }
             }
         }
 
