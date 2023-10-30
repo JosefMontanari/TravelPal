@@ -135,7 +135,7 @@
             Grid.Row="1"
             Grid.Column="2"
             Height="25"
-            Margin="5 20 40 0"/>
+            Margin="5 20 40 0" SelectionChanged="cbCountries_SelectionChanged"/>
 
         <ComboBox
             Name="cbTravelers"
@@ -175,7 +175,7 @@
             Grid.Row="6"
             Grid.Column="1"
             Width="105"
-            Height="35"/>
+            Height="35" Click="btnAddTravel_Click"/>
 
         <Button
             Name="btnClose"

@@ -123,6 +123,7 @@ namespace TravelPal.Pages
             if (chkTravelDocument.IsChecked == true)
             {
                 cbQuantity.IsEnabled = false;
+                cbQuantity.SelectedIndex = -1;
                 chkRequired.IsEnabled = true;
             }
 
@@ -134,6 +135,7 @@ namespace TravelPal.Pages
             {
                 cbQuantity.IsEnabled = true;
                 chkRequired.IsEnabled = false;
+                chkRequired.IsChecked = false;
             }
         }
 
@@ -156,6 +158,25 @@ namespace TravelPal.Pages
             TravelsWindow travelsWindow = new(user);
             travelsWindow.Show();
             Close();
+        }
+
+        private void btnAddTravel_Click(object sender, RoutedEventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txtCity.Text) || cbCountries.SelectedIndex == -1
+                || cbTravelers.SelectedIndex == -1 || cbPurpose.SelectedIndex == -1
+                || dtpStart.SelectedDate == null || dtpEnd.SelectedDate == null)
+            {
+                MessageBox.Show("You need to fill all fields!");
+            }
+            else
+            {
+                // TODO lägg till resa
+            }
+        }
+
+        private void cbCountries_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
         }
     }
 }
