@@ -82,5 +82,13 @@ namespace TravelPal.Pages
                 MessageBox.Show("You must select an existing travel");
             }
         }
+
+        private void btnAdd_Click(object sender, RoutedEventArgs e)
+        {
+            AddTravelWindow addTravelWindow = new((User)user);
+            addTravelWindow.Show();
+            Close();
+
+        }
     }
 }

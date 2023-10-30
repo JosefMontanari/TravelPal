@@ -73,7 +73,7 @@
             Height="45"
             BorderBrush="Transparent"
             HorizontalAlignment="Left"
-            Margin="5 0 0 0"/>
+            Margin="5 0 0 0" Click="btnAdd_Click"/>
 
         <Button
             Name="btnDetails"
