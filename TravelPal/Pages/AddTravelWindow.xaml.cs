@@ -44,49 +44,78 @@ namespace TravelPal.Pages
 
         private void btnAddPacking_Click(object sender, RoutedEventArgs e)
         {
-
-            if (chkTravelDocument.IsChecked == true)
+            if (!string.IsNullOrWhiteSpace(txtLuggage.Text))
             {
-                //Lägg till ett travel document
-
-                string name = txtLuggage.Text;
-                bool isRequired;
-                string required;
-                if (chkRequired.IsChecked == true)
+                if (chkTravelDocument.IsChecked == true)
                 {
-                    isRequired = true;
-                    required = " Required";
+                    //Lägg till ett travel document
+
+                    string name = txtLuggage.Text;
+                    bool isRequired;
+                    string required;
+                    if (chkRequired.IsChecked == true)
+                    {
+                        isRequired = true;
+                        required = " Required";
+                    }
+                    else
+                    {
+                        isRequired = false;
+                        required = " Not required";
+                    }
+
+                    TravelDocument travelDocument = new(name, isRequired);
+
+                    ListViewItem listViewItem = new();
+                    listViewItem.Tag = travelDocument;
+
+                    listViewItem.Content = travelDocument.Name + required;
+                    lstLuggage.Items.Add(listViewItem);
+
+                    ClearLuggageFields();
                 }
+
                 else
                 {
-                    isRequired = false;
-                    required = " Not required";
+                    if (cbQuantity.SelectedIndex != -1)
+                    {
+                        // Lägg till ett other item
+                        string name = txtLuggage.Text;
+                        int quantity = int.Parse(cbQuantity.SelectedItem.ToString());
+
+                        OtherItem otherItem = new(name, quantity);
+
+                        ListViewItem listViewItem = new();
+                        listViewItem.Tag = otherItem;
+
+                        listViewItem.Content = otherItem.Name + " " + quantity;
+                        lstLuggage.Items.Add(listViewItem);
+
+                        ClearLuggageFields();
+
+
+
+                    }
+                    else
+                    {
+                        MessageBox.Show("You have to select a quantity!");
+                    }
                 }
 
-                TravelDocument travelDocument = new(name, isRequired);
-
-                ListViewItem listViewItem = new();
-                listViewItem.Tag = travelDocument;
-
-                listViewItem.Content = travelDocument.Name + required;
-                lstLuggage.Items.Add(listViewItem);
-
-                txtLuggage.Clear();
-                chkRequired.IsChecked = false;
-                chkTravelDocument.IsChecked = false;
             }
-
             else
             {
-                if (cbQuantity.SelectedIndex != -1)
-                {
-                    // Lägg till ett other item
-                    string name = txtLuggage.Text;
-                    int quantity = int.Parse(cbQuantity.SelectedItem.ToString());
-
-                }
+                MessageBox.Show("You have to give the packing item a name!");
             }
 
+        }
+
+        private void ClearLuggageFields()
+        {
+            txtLuggage.Clear();
+            chkRequired.IsChecked = false;
+            chkTravelDocument.IsChecked = false;
+            cbQuantity.SelectedIndex = -1;
         }
 
         private void chkTravelDocument_Checked(object sender, RoutedEventArgs e)
@@ -94,6 +123,7 @@ namespace TravelPal.Pages
             if (chkTravelDocument.IsChecked == true)
             {
                 cbQuantity.IsEnabled = false;
+                chkRequired.IsEnabled = true;
             }
 
         }
@@ -103,6 +133,7 @@ namespace TravelPal.Pages
             if (chkTravelDocument.IsChecked == false)
             {
                 cbQuantity.IsEnabled = true;
+                chkRequired.IsEnabled = false;
             }
         }
 
