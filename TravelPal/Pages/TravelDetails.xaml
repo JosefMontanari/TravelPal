@@ -95,7 +95,7 @@
             Grid.Row="2"
             Grid.Column="2"
             Height="25"
-            Margin="5 20 40 0"
+            Margin="5 20 0 0"
             IsReadOnly="True"/>
 
         <TextBox

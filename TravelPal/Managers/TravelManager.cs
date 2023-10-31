@@ -54,6 +54,17 @@ namespace TravelPal.Managers
             return $"Destination: {Destination}, {Country}. Travelers: {Travelers}. Duration: {TravelDays} days.";
         }
 
+        // Metod för att på ett snyggt sätt displaya start och slut samt hur lång resan är
+        public string GetTravelDates()
+        {
+            string startDateString = StartDate.Year.ToString() + "-" + StartDate.Month.ToString() + "-" + StartDate.Day.ToString();
+            string endDateString = EndDate.Year.ToString() + "-" + EndDate.Month.ToString() + "-" + EndDate.Day.ToString();
+            string travelDates = startDateString + " to " + endDateString + $"( {CalculateTravelDays(StartDate, EndDate)} Days)";
+
+
+            return travelDates;
+        }
+
         private int CalculateTravelDays(DateTime startDate, DateTime endDate)
         {
             var dateAndTime = startDate;

@@ -31,7 +31,7 @@ namespace TravelPal.Pages
                 txtCity.Text = vacation.Destination;
                 txtCountry.Text = vacation.Country.ToString();
                 txtTravelers.Text = vacation.Travelers.ToString();
-                txtTraveldays.Text = vacation.TravelDays.ToString() + " days";
+                txtTraveldays.Text = vacation.GetTravelDates();
                 if (vacation.AllInclusive)
                 {
                     txtAllInclusive.Text = "Yes";
@@ -55,7 +55,7 @@ namespace TravelPal.Pages
                 txtCountry.Text = worktrip.Country.ToString();
                 txtTravelers.Text = worktrip.Travelers.ToString();
                 txtMeetingDetails.Text = worktrip.MeetingDetails.ToString();
-                txtTraveldays.Text = worktrip.TravelDays.ToString() + " days";
+                txtTraveldays.Text = worktrip.GetTravelDates();
                 foreach (iPackingListItem packingItem in worktrip.PackingList)
                 {
                     DisplayAllPackingItems(packingItem);

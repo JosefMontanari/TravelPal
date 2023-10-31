@@ -49,9 +49,9 @@ namespace TravelPal.Classes
 
             };
 
-            Vacation travelOne = new("Stockholm", Country.Sweden, 4, DateTime.Now, DateTime.Now, true, packingList);
+            Vacation travelOne = new("Stockholm", Country.Sweden, 4, DateTime.Now, DateTime.Now.AddDays(5), true, packingList);
             Travels.Add(travelOne);
-            WorkTrip travelTwo = new("London", Country.UK, 4, DateTime.Now, DateTime.Now, "Meeting Albin to discuss my project", packingListTwo);
+            WorkTrip travelTwo = new("London", Country.UK, 4, DateTime.Now, DateTime.Now.AddDays(7), "Meeting Albin to discuss my project", packingListTwo);
             Travels.Add(travelTwo);
 
         }
