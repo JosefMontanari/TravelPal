@@ -55,7 +55,7 @@ namespace TravelPal.Pages
                 txtCountry.Text = worktrip.Country.ToString();
                 txtTravelers.Text = worktrip.Travelers.ToString();
                 txtMeetingDetails.Text = worktrip.MeetingDetails.ToString();
-
+                txtTraveldays.Text = worktrip.TravelDays.ToString() + " days";
                 foreach (iPackingListItem packingItem in worktrip.PackingList)
                 {
                     DisplayAllPackingItems(packingItem);
@@ -72,7 +72,7 @@ namespace TravelPal.Pages
                 TravelDocument travelDocument = (TravelDocument)packingItem;
                 ListViewItem listViewItem = new ListViewItem();
                 listViewItem.Tag = packingItem;
-                listViewItem.Content = travelDocument.Name + " " + travelDocument.Required;
+                listViewItem.Content = travelDocument.GetInfo();
                 lstLuggage.Items.Add(listViewItem);
 
             }
@@ -81,7 +81,7 @@ namespace TravelPal.Pages
                 OtherItem otherItem = (OtherItem)packingItem;
                 ListViewItem listViewItem = new ListViewItem();
                 listViewItem.Tag = packingItem;
-                listViewItem.Content = otherItem.Name + " " + otherItem.Quantity.ToString();
+                listViewItem.Content = otherItem.GetInfo();
                 lstLuggage.Items.Add(listViewItem);
             }
         }
@@ -163,7 +163,9 @@ namespace TravelPal.Pages
                                 workTrip.MeetingDetails = txtMeetingDetails.Text;
 
                                 travel = workTrip;
-
+                                btnSave.IsEnabled = false;
+                                btnEdit.IsEnabled = true;
+                                txbValidCountries.Visibility = Visibility.Hidden;
                             }
 
 
@@ -193,12 +195,15 @@ namespace TravelPal.Pages
                                 vacation.AllInclusive = false;
 
                                 travel = vacation;
-
+                                btnSave.IsEnabled = false;
+                                btnEdit.IsEnabled = true;
+                                txbValidCountries.Visibility = Visibility.Hidden;
                             }
                             else
                             {
                                 MessageBox.Show("All inclusive needs to be either yes or no!");
                             }
+
 
                         }
 
@@ -206,9 +211,6 @@ namespace TravelPal.Pages
 
                 }
 
-                btnSave.IsEnabled = false;
-                btnEdit.IsEnabled = true;
-                txbValidCountries.Visibility = Visibility.Hidden;
 
             }
 

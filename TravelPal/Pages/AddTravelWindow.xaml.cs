@@ -81,7 +81,7 @@ namespace TravelPal.Pages
                         ListViewItem listViewItem = new();
                         listViewItem.Tag = otherItem;
 
-                        listViewItem.Content = otherItem.Name + " " + quantity;
+                        listViewItem.Content = otherItem.GetInfo();
                         lstLuggage.Items.Add(listViewItem);
 
                         ClearLuggageFields();
@@ -109,19 +109,9 @@ namespace TravelPal.Pages
 
             ListViewItem listViewItem = new();
             listViewItem.Tag = travelDocument;
+            listViewItem.Content = travelDocument.GetInfo();
 
-            if (isRequired)
-            {
 
-                listViewItem.Content = travelDocument.Name + " (Required)";
-
-            }
-            else
-            {
-
-                listViewItem.Content = travelDocument.Name + " (Not required)";
-
-            }
             lstLuggage.Items.Add(listViewItem);
         }
 
@@ -156,15 +146,19 @@ namespace TravelPal.Pages
 
         private void cbPurpose_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
         {
-            if (cbPurpose.SelectedItem.ToString() == "Vacation")
+            if (cbPurpose.SelectedIndex != -1)
             {
-                chkAllInclusive.IsEnabled = true;
-                txtMeetingDetails.IsEnabled = false;
-            }
-            else if (cbPurpose.SelectedItem.ToString() == "Worktrip")
-            {
-                chkAllInclusive.IsEnabled = false;
-                txtMeetingDetails.IsEnabled = true;
+                if (cbPurpose.SelectedItem.ToString() == "Vacation")
+                {
+                    chkAllInclusive.IsEnabled = true;
+                    txtMeetingDetails.IsEnabled = false;
+                }
+                else if (cbPurpose.SelectedItem.ToString() == "Worktrip")
+                {
+                    chkAllInclusive.IsEnabled = false;
+                    txtMeetingDetails.IsEnabled = true;
+                }
+
             }
         }
 
@@ -185,7 +179,6 @@ namespace TravelPal.Pages
             }
             else
             {
-                // TODO lägg till resa
 
                 if (cbPurpose.SelectedIndex == 0)
                 {
@@ -219,8 +212,23 @@ namespace TravelPal.Pages
                         (DateTime)dtpStart.SelectedDate, (DateTime)dtpEnd.SelectedDate, txtMeetingDetails.Text, packingList);
 
                     user.Travels.Add(workTrip);
+
                 }
+                ClearAllFields();
             }
+        }
+
+        private void ClearAllFields()
+        {
+            ClearLuggageFields();
+            txtCity.Text = string.Empty;
+            txtMeetingDetails.Text = string.Empty;
+            cbCountries.SelectedIndex = -1;
+            cbTravelers.SelectedIndex = -1;
+            cbPurpose.SelectedIndex = -1;
+            dtpEnd.SelectedDate = null;
+            dtpStart.SelectedDate = null;
+
         }
 
         private void cbCountries_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -238,47 +246,50 @@ namespace TravelPal.Pages
                 }
 
             }
-
-            // Kolla om användaren är från europa
-            foreach (Country countries in Enum.GetValues(typeof(EuropeanCountry)))
+            if (cbCountries.SelectedIndex != -1)
             {
-                if (user.Country == countries)
+
+                // Kolla om användaren är från europa
+                foreach (Country countries in Enum.GetValues(typeof(EuropeanCountry)))
                 {
-                    userIsEuropean = true;
+                    if (user.Country == countries)
+                    {
+                        userIsEuropean = true;
+                    }
                 }
-            }
 
-            // Kolla om destinationen är i europa
-            foreach (Country countries in Enum.GetValues(typeof(EuropeanCountry)))
-            {
-                if ((Country)cbCountries.SelectedItem == countries)
+                // Kolla om destinationen är i europa
+                foreach (Country countries in Enum.GetValues(typeof(EuropeanCountry)))
                 {
-                    countryIsEuropean = true;
+                    if ((Country)cbCountries.SelectedItem == countries)
+                    {
+                        countryIsEuropean = true;
+                    }
                 }
-            }
 
 
-            // Om användaren är från samma land behövs inte ett passport oavset vad
-            if (user.Country == (Country)cbCountries.SelectedItem)
-            {
-                AddTravelDocument("Passport", false);
+                // Om användaren är från samma land behövs inte ett passport oavset vad
+                if (user.Country == (Country)cbCountries.SelectedItem)
+                {
+                    AddTravelDocument("Passport", false);
 
-            }
-            else if (!userIsEuropean)
-            {
-                AddTravelDocument("Passport", true);
-            }
+                }
+                else if (!userIsEuropean)
+                {
+                    AddTravelDocument("Passport", true);
+                }
 
-            else if (!countryIsEuropean)
-            {
-                AddTravelDocument("Passport", true);
+                else if (!countryIsEuropean)
+                {
+                    AddTravelDocument("Passport", true);
 
-            }
+                }
 
-            else
-            {
-                AddTravelDocument("Passport", false);
+                else
+                {
+                    AddTravelDocument("Passport", false);
 
+                }
             }
         }
     }

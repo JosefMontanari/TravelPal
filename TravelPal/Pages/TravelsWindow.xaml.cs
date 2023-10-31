@@ -15,7 +15,7 @@ namespace TravelPal.Pages
         public TravelsWindow(iUser user)
         {
             InitializeComponent();
-            lblUser.Content = user.Username;
+            lblUser.Content = "Welcome " + user.Username + "!";
             this.user = user;
             if (user.GetType() == typeof(User))
             {
