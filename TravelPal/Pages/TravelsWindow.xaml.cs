@@ -66,15 +66,41 @@ namespace TravelPal.Pages
         {
             if (lstTravels.Items.Count > 0 && lstTravels.SelectedIndex != -1)
             {
-                ListViewItem selectedItem = new ListViewItem();
-                selectedItem = (ListViewItem)lstTravels.SelectedItem;
-                Travel selectedTravel = (Travel)selectedItem.Tag;
-                lstTravels.Items.Remove(selectedItem);
+                if (this.user.GetType() == typeof(User))
+                {
 
-                User thisUser = (User)user;
-                thisUser.Travels.Remove(selectedTravel);
+                    ListViewItem selectedItem = new ListViewItem();
+                    selectedItem = (ListViewItem)lstTravels.SelectedItem;
+                    Travel selectedTravel = (Travel)selectedItem.Tag;
+                    lstTravels.Items.Remove(selectedItem);
 
 
+                    User thisUser = (User)user;
+                    thisUser.Travels.Remove(selectedTravel);
+
+
+                }
+                else
+                {
+                    foreach (iUser users in UserManager.Users)
+                    {
+
+                        if (users.GetType() == typeof(User))
+                        {
+                            User userToRemoveTravelFrom = (User)users;
+
+                            ListViewItem selectedItem = new ListViewItem();
+                            selectedItem = (ListViewItem)lstTravels.SelectedItem;
+                            Travel selectedTravel = (Travel)selectedItem.Tag;
+                            lstTravels.Items.Remove(selectedItem);
+
+
+                            userToRemoveTravelFrom.Travels.Remove(selectedTravel);
+                        }
+
+                    }
+
+                }
             }
             else
             {
@@ -84,6 +110,9 @@ namespace TravelPal.Pages
 
 
         }
+
+
+
 
         private void btnDetails_Click(object sender, RoutedEventArgs e)
         {
