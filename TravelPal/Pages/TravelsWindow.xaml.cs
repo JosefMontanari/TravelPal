@@ -29,6 +29,29 @@ namespace TravelPal.Pages
                 }
 
             }
+            // Admin ska inte kunna lägga till resor och ska se alla befintliga resor
+            else
+            {
+                btnAdd.IsEnabled = false;
+
+                foreach (iUser users in UserManager.Users)
+                {
+                    if (users.GetType() == typeof(User))
+                    {
+                        User userAsUser = (User)users;
+                        foreach (Travel travel in userAsUser.Travels)
+                        {
+                            ListViewItem listViewItem = new ListViewItem();
+                            listViewItem.Tag = travel;
+                            listViewItem.Content = travel.Destination.ToString() + ", " + travel.Country.ToString()
+                                + ", " + userAsUser.Username;
+                            lstTravels.Items.Add(listViewItem);
+
+                        }
+
+                    }
+                }
+            }
 
         }
 

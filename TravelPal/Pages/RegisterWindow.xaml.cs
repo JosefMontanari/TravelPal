@@ -45,6 +45,10 @@ namespace TravelPal.Pages
                         txtPassword.Clear();
                         txtPasswordConfirm.Clear();
                         txtUsername.Clear();
+                        MainWindow mainWindow = new("hej");
+                        mainWindow.Show();
+                        Close();
+
                     }
 
 

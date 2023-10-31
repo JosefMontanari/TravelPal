@@ -31,6 +31,7 @@ namespace TravelPal.Pages
                 txtCity.Text = vacation.Destination;
                 txtCountry.Text = vacation.Country.ToString();
                 txtTravelers.Text = vacation.Travelers.ToString();
+                txtTraveldays.Text = vacation.TravelDays.ToString() + " days";
                 if (vacation.AllInclusive)
                 {
                     txtAllInclusive.Text = "Yes";
@@ -133,7 +134,7 @@ namespace TravelPal.Pages
                 }
                 if (!isCorrectCountry)
                 {
-                    MessageBox.Show("Please input a valid country");
+                    MessageBox.Show("Please input a valid country, check the list!");
                 }
                 else
                 {
