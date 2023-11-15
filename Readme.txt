@@ -27,4 +27,3 @@ Satt user som property på varje travel för att underlätta hanterandet av trav
 Jag förstod först inte värdet av signedInUser propertien, men hade jag gjort om projektet nu hade jag använt det istället. Det hade underlättat skrivandet av koden.
 
 
-
